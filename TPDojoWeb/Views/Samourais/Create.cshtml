@@ -1,0 +1,57 @@
+﻿@model TPDojoWeb.Models.SamouraisVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+<img src="../../assets/sam3.png" width=" = 150px" height="150px" />
+<h1>Create</h1>
+
+<h4>Samourai</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Force" class="control-label"></label>
+                <input asp-for="Force" class="form-control" />
+                <span asp-validation-for="Force" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ArmeId" class="control-label"></label>
+                <select asp-for="ArmeId" class="form-control"
+                        asp-items="Model.SelectArmes">
+                    <option value="">Please select one</option>
+                </select>
+                <span asp-validation-for="ArmeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArtsMartiauxIds" class="control-label"></label>
+                <select asp-for="ArtsMartiauxIds" class="form-control"
+                        asp-items="Model.SelectArtsMartiaux" multiple>
+                    <option value="">Please select one</option>
+                </select>
+                <span asp-validation-for="ArtsMartiauxIds" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
